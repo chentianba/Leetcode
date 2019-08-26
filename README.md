@@ -1,7 +1,10 @@
 # Leetcode
 Coding about leetcode
+***
+# Algorithm
+* [图算法](https://github.com/chentianba/Leetcode/blob/master/algorithm/graph/README.md)
 
-add
+***
 # Resource
 * [Github的pezy](https://github.com/pezy/LeetCode)  
 * [Leetcode答案查询网站](https://www.jiuzhang.com/solution/)
