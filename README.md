@@ -1,7 +1,7 @@
 # Leetcode
 Coding about leetcode
 ***
-# Algorithm
+# 算法笔记
 * [图算法](https://github.com/chentianba/Leetcode/blob/master/algorithm/graph/README.md)
 
 ***
