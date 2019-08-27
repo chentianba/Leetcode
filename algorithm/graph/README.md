@@ -5,6 +5,8 @@
   * 后序遍历
 + [宽度优先搜索BFS](#宽度优先搜索)
   * 层次遍历
++ 单源最短路径
+  * [Dijkstra算法（优先队列）](#Dijkstra算法（优先队列）)
 
 ***
 ### 深度优先搜索
@@ -76,4 +78,12 @@ void pre_traverse(TreeNode *root) {
 ```
 使用队列，初始化时将根节点入队  
 然后不断出队、输出信息、将左右非空子节点入队，直到队列为空
+```
+***
+### Dijkstra算法（优先队列）
+Dijkstra算法使用贪心+动态规划，初始化时，集合S为空，从当前路径中找到最短路径的顶点u，加入到S中，然后从顶点u松弛V-S中顶点的路径，重复V次，直到所有顶点都加入到S中。  
+伪代码：  
+![](https://github.com/chentianba/Leetcode/blob/master/algorithm/graph/dijkstra_priority_queue.png)
+```cpp
+cout << "Hello World!" << endl;
 ```
