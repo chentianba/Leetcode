@@ -81,6 +81,7 @@ void pre_traverse(TreeNode *root) {
 ```
 ***
 ### Dijkstra算法
+> 限制条件：*所有边的权重都为非负值*
 Dijkstra算法使用贪心+动态规划，初始化时，集合S为空，从当前路径中找到最短路径的顶点u（该过程可以使用**优先队列**优化），加入到S中，然后从顶点u松弛V-S中顶点的路径，重复V次，直到所有顶点都加入到S中。  
 伪代码：  
 ![伪代码](https://github.com/chentianba/Leetcode/blob/master/algorithm/graph/dijkstra_priority_queue.png)
