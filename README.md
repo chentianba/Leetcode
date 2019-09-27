@@ -1,5 +1,11 @@
 # Leetcode
-Coding about leetcode
+Coding about leetcode  
+
+| 题号 | 描述 | 解法 | 要点
+| ---- | ---- | ---- | ---- |
+| 5 | 最长回文子串 | 动态规划 | 奇数、偶数两种回文子串 |
+| 10 | 正则表达式匹配 | 动态规划 | 重叠子问题 |
+
 ***
 # 算法笔记
 * [图算法](https://github.com/chentianba/Leetcode/blob/master/algorithm/graph/README.md)
