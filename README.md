@@ -1,5 +1,5 @@
 # Leetcode
-Coding about leetcode  
+**Summary for Leetcode**
 
 | Retry | 题号 | 描述 | 解法 | 要点 
 | ---- | ---- | ---- | ---- | ---- |
