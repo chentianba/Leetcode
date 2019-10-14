@@ -22,7 +22,7 @@
 
 ***
 # 算法笔记
-* [图算法](https://github.com/chentianba/Leetcode/blob/master/algorithm/graph/README.md)
+* [图算法](https://github.com/chentianba/Leetcode/blob/master/algorithm/Graph/README.md)
 
 ***
 # Resource
