@@ -6,7 +6,7 @@
 + [宽度优先搜索BFS](#宽度优先搜索)
   * 层次遍历
 + 单源最短路径
-  * [Dijkstra算法（优先队列）](#Dijkstra算法)
+  * [Dijkstra算法（优先队列）](#dijkstra算法)
 
 ***
 ### 深度优先搜索
@@ -82,6 +82,7 @@ void pre_traverse(TreeNode *root) {
 ```
 ***
 ### Dijkstra算法
+
 > 限制条件：*所有边的权重都为非负值*  
 时间复杂度：*O((E+V)logV)*
 
