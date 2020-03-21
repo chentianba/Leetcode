@@ -1,90 +1,114 @@
-## 图
-+ [深度优先搜索DFS](#深度优先搜索)
-  * 前序遍历
-  * 中序遍历
-  * 后序遍历
-+ [宽度优先搜索BFS](#宽度优先搜索)
-  * 层次遍历
+# 图
++ 图的遍历
+  * [深度优先搜索DFS](#深度优先搜索)
+  * [宽度优先搜索BFS](#宽度优先搜索)
+  * [拓扑排序](#拓扑排序)
+  * [关键路径算法](#关键路径)
 + 单源最短路径
-  * [Dijkstra算法（优先队列）](#dijkstra算法)
+  * [Bellman-Ford算法](#Bellman-Ford算法)
+  * [有向无环图的单源最短路径](#有向无环图的单源最短路径)
+  * [Dijkstra算法（优先队列）](#Dijkstra算法)
++ 所有结点对的最短路径
+    * [Floyd算法](#Floyd算法)
++ 最小生成树
+    * [Kruskal算法](#Kruskal算法)
+    * [Prim算法](#Prim算法)
 
 ***
-### 深度优先搜索
-* **前序遍历**
-1. 递归版
-```cpp
-void pre_traverse(TreeNode *root) {
-  if (root != NULL) {
-    cout << root->val << " ";
-    pre_traverse(root->left);
-    pre_traverse(root->right);
-  }
-}
-```
-2. 非递归版
-> 初始化时将根节点压入栈  
-弹出栈顶元素，输出该节点  
-使用栈记录当前节点的右子节点、左子节点  
-重复该操作  
-```cpp
-stack.push(root);
-while (!stack.empty()) {
-  p = stack.top(); stack.pop(); cout << p->val << " ";
-  if (p->right != NULL) stack.push(p->right);
-  if (p->left != NULL) stack.push(p->left);
-}
-```
-* **中序遍历**
-1. 递归版
-```cpp
-void pre_traverse(TreeNode *root) {
-  if (root != NULL) {
-    pre_traverse(root->left);
-    cout << root->val << " ";
-    pre_traverse(root->right);
-  }
-}
-```
-2. 非递归版  
-中序遍历就是正常的深度优先搜索，一直向左遍历压入堆栈，直到叶子节点，然后弹出栈顶元素输出，并将该元素的右子节点压入堆栈，沿着右子节点的左方向继续压栈；重复该操作直至完成。
-```cpp
-TreeNode *p = root;
-while (!stack.empty() || p != NULL) {
-  if (p != NULL) {
-    stack.push(p);
-    p = p->left; // 压入堆栈并向左遍历，直到为NULL
-  } else {
-    // 表示向左已经到头，从栈顶弹出的元素即为父节点
-    p = stack.top(); cout << p->val << " "; st.pop();
-    p = p->right; // 从父节点的右子节点继续向左扩展
-  }
-}
-```
-* **后序遍历**
-1. 递归版
-```cpp
-void pre_traverse(TreeNode *root) {
-  if (root != NULL) {
-    pre_traverse(root->left);
-    pre_traverse(root->right);
-    cout << root->val << " ";
-  }
-}
-```
-2. 非递归版  
-使用**双栈**，后序遍历可以看做**倒过来的前序遍历**，即（左、右、中）->（中、右、左），因此先做前序遍历将遍历结果存入一个栈中，然后再将栈依次弹出即可。
-***
-### 宽度优先搜索
-* **层次遍历**
-```
-使用队列，初始化时将根节点入队  
-然后不断出队、输出信息、将左右非空子节点入队，直到队列为空
-```
-***
-### Dijkstra算法
 
-> 限制条件：*所有边的权重都为非负值*  
-时间复杂度：*O((E+V)logV)*
+## 图的遍历
+
+### **深度优先搜索**
+
+深度优先搜索DFS使用**栈**
+```java
+public void dfs() {
+    Stack<Integer> stack = new Stack<>();
+    boolean[] visited = new boolean[n];
+    int p = 0;
+    stack.push(0);
+    visited[p] = true; // 标记入栈结点，防止重复遍历
+    while (!stack.empty()) {
+        p = stack.pop();
+        System.out.print((p+1)+" ");
+        for (int i = n-1; i >= 0; --i) {
+            if (edge[p][i] < inf && edge[p][i] > 0 && !visited[i]) { // 该边有效且新节点未被遍历
+                stack.push(i);
+                visited[i] = true;
+            }
+        }
+    }
+    System.out.println();
+}
+```
+
+### **宽度优先搜索**
+
+宽度优先搜索BFS使用**队列**
+```java
+public void bfs() {
+    Queue<Integer> queue = new LinkedList<>();
+    boolean[] visited = new boolean[n];
+    int p = 0;
+    queue.offer(p);
+    visited[p] = true; // 标记入队结点，防止重复遍历
+    while (!queue.isEmpty()) {
+        p = queue.poll();
+        System.out.print((p+1)+" ");
+        for (int i = n-1; i >= 0; --i) {
+            if (edge[p][i] < inf && edge[p][i] > 0 && !visited[i]) { // 该边有效且新节点未被遍历
+                queue.offer(i);
+                visited[i] = true;
+            }
+        }
+    }
+    System.out.println();
+}
+```
+
+### **拓扑排序**
+
+1. 从网格中选择一个入度为0的顶点输出；
+2. 从网中删除该顶点及其所有出边；
+3. 执行步骤1、步骤2，直到所有顶点已输出，或网中剩余顶点入度均不为0（说明网中存在回路）
+
+伪代码：  
+```java
+```
+
+### **关键路径**
+
+求关键活动算法：
+1. 对AOE网络**拓扑排序**；（若网中有回路，则终止算法）
+2. 按拓扑次序求出各顶点事件的**最早发生时间ve**；
+3. 按拓扑序列的**逆序**求各顶点事件的**最迟发生时间vl**；
+4. 根据ve和vl的值，*最早开始时间*与*最迟开始时间***相等**的活动，即为关键活动。
+***
+## 单源最短路径
+
+### **Bellman-Ford算法**
+
+> 限制条件：*对边无要求*  
+> 时间复杂度：*O(VE)*  
+> 作用：**侦测是否存在从源结点可以到达的权重为负值的环路**  
+
+Bellman-Ford算法通过对每条边进行`V-1(V为边的条数)`次**松弛**，使得每个结点上记录最短路径；当再进行第V次松弛判断时，如果可以松弛，则说明存在负值环路，否则，不存在负环。
+
+伪代码：  
+![伪代码](/algorithm/Graph/bellman_ford.png)
+
+### **有向无环图的单源最短路径**
+
+> 限制条件：*有向无环图*  
+时间复杂度：*O(V+E)*  
+作用：
+
+
+
+### **Dijkstra算法**
+> 限制条件：*所有边的权重都为非de负值*  
+时间复杂度：*O((E+V)logV)*  
+作用：采用合适的方式，Dijkstra算法的运行时间要低于Bellman-Ford算法的运行时间
 
 Dijkstra算法使用贪心+动态规划，初始化时，集合S为空，从当前路径中找到最短路径的顶点u（该过程可以使用**优先队列**优化），加入到S中，然后从顶点u松弛V-S中顶点的路径，重复V次，直到所有顶点都加入到S中。  
 伪代码：  
@@ -122,3 +146,17 @@ while (!pq.empty()) {
     }
 }
 ```
+***
+## 所有结点对的最短路径
+
+### **Floyd算法**
+
+***
+## 最小生成树
+
+
+### **Kruskal算法**
+
+
+### **Prim算法**
+

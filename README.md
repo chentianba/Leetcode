@@ -19,6 +19,43 @@
 | | 23 | 合并K个排序链表 | 链表 | 递归实现或者优先队列进行比较 |
 | | 31 | 下一个排列 | 字典序算法 | |
 | * | 32 | 最长有效括号 | 栈或者动态规划 | 如何定义好动态规划问题，优先考虑一维 |
+| | 33 | 搜索旋转排序数组 | 二分查找 | 使用两次二分查找 |
+| | 34 | 在排序数组中查找元素的第一个和最后一个位置 | 二分查找 | 使用二分查找寻找边界 |
+| * | 39 | 组合总和 | 回溯法、剪枝 | 对解规定顺序 |
+| * | 42 | 接雨水 | 动态编程 |  |
+| | 46 | 全排列 | 回溯法 | |
+| | 48 | 旋转图像 |  | 矩阵变换 |
+| | 49 |字母异位词分组 | 哈希表 | |
+| | 53 | 最大子序和 | | 要先用最直接的方法分析该问题，然后再进一步优化 |
+| | 55 | 跳跃游戏 | 动态规划 | 用贪心优化 |
+| | 56 | 合并区间 | 排序 | |
+| | 62 | 不同路径 | | |
+| | 64 | 最小路径和 | 动态规划 | |
+| | 70 | 爬楼梯 | 动态规划 | 斐波那契数 |
+| * | 72 | 编辑距离 | 动态规划 | 三种操作对应三种前置状态 |
+| * | 75 | 颜色分类 | 双指针 | 注意遍历过的交换和未遍历的交换分开处理 |
+| | 76 | 最小覆盖子串 | 滑动窗口 | |
+| | 78 | 子集 | 回溯法 | |
+| * | 79 | 单词搜索 | 图的DFS | |
+| * | 84 | 柱状图中最大的矩形 | 单调栈 | 处理单调栈的入栈（左边界）和出栈（右边界） |
+| | 94 | 二叉树的中序遍历 | | |
+| | 96 | 不同的二叉搜索树 | 动态规划 | |
+| * | 98 | 验证二叉搜索树 | 分支限界或者中序遍历 | |
+| | 101 | 对称二叉树 |  | 树的双向遍历或层次遍历的迭代 |
+| | 102 | 二叉树的层次遍历 | 层次遍历 | 带有标记的层次遍历 |
+| | 104 | 二叉树的最大深度 | DFS | |
+| | 105 | 从前序与中序遍历序列构造二叉树 | 分治 | |
+| * | 114 | 二叉树展开为链表 | | 原地算法 |
+| | 121 | 买卖股票的最佳时机 | | 一次遍历 |
+| | 136 | 只出现一次的数字 | 哈希 | |
+| | 139 | 单词拆分 | 动态规划 | |
+| | 141 | 环形链表 | 快慢指针 | |
+| * | 142 | 环形链表 II | 快慢指针 | 快慢指针确定环型链表的入口 |
+| | 146 | LRU缓存机制 | LinkedHashMap(Java) | |
+| ** | 85 | 最大矩形 | 单调栈 | 转化成84题，重复使用单调栈 |
+| | 128 | 最长连续序列 | 哈希表 | |
+| * | 124 | 二叉树中的最大路径和 | 深度优先搜索 | |
+
 
 ***
 # 算法笔记
@@ -26,7 +63,10 @@
 
 ***
 # Resource
-* [Github的pezy](https://github.com/pezy/LeetCode)  
-* [Leetcode答案查询网站](https://www.jiuzhang.com/solution/)
-* [数据结构与算法之美](http://asdfghjkl.xyz/2019/05/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E/?nsukey=sqbc%2FtdGR7a6mqcf12aRwuaUo4NIwvu3IJqIGQ9mlKvUKReTqHzjIZ8LBDYaEeuGQG%2Fe34iLbTRCX%2Bs1eMvMRHzoqxh63jBdY4PTiBcRSDQKRoSSodIpKjDA9iGeK2381XzDLT9U8NgO8gwIZO0Qlg%3D%3D)
-* <img width="1060" height="400" src="/%E7%AE%97%E6%B3%95%E7%B1%BB%E5%88%AB%E5%9B%BE.png"/>
+* Importance
+    * [北美Leetcode题目分类](https://zhuanlan.zhihu.com/p/89392459)
+    * [数据结构与算法之美](http://asdfghjkl.xyz/2019/05/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E/?nsukey=sqbc%2FtdGR7a6mqcf12aRwuaUo4NIwvu3IJqIGQ9mlKvUKReTqHzjIZ8LBDYaEeuGQG%2Fe34iLbTRCX%2Bs1eMvMRHzoqxh63jBdY4PTiBcRSDQKRoSSodIpKjDA9iGeK2381XzDLT9U8NgO8gwIZO0Qlg%3D%3D)
+* Not Importance
+    * [Github的pezy](https://github.com/pezy/LeetCode)  
+    * [Leetcode答案查询网站](https://www.jiuzhang.com/solution/)
+    * <img width="1060" height="400" src="/%E7%AE%97%E6%B3%95%E7%B1%BB%E5%88%AB%E5%9B%BE.png"/>
