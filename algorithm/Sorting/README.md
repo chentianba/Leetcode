@@ -14,8 +14,8 @@
 
 ![排序算法](/algorithm/Sorting/sorting_summary.png)
 
-[十大经典排序算法](https://www.cnblogs.com/guoyaohua/p/8600214.html)
-
+* [十大经典排序算法](https://www.cnblogs.com/guoyaohua/p/8600214.html)
+* [代码实现](/algorithm/Sorting/Sorting.java)
 
 特点：
 * **原址的(in place)**： 如果输入数组中仅有常数个元素需要在排序过程中存储在数组之外，则称排序算法是原址的；
