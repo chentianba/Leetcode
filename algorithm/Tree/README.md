@@ -105,7 +105,37 @@
 ***
 
 ## 哈夫曼树
-
+哈夫曼编码是一种**贪心**算法，其过程如下：
+1. 将字符集合(N个字符)作为叶子结点，并加入到优先队列中
+2. 重复以下操作N-1次
+    * 从优先队列中找到最小结点`a`
+    * 从优先队列中找到最小结点`b`
+    * 将`a`和`b`合并为`z`，并加入到优先队列中
+3. 最后队列中只剩下一个结点，该结点即为哈夫曼树的根结点
+```java
+public TreeNode huffmanEncoding(int[] count) {
+    Comparator<TreeNode> comp = new Comparator<TreeNode>() {
+        @Override
+        public int compare(TreeNode e1, TreeNode e2) {
+            return e1.val - e2.val;
+        }
+    };
+    PriorityQueue<TreeNode> pq = new PriorityQueue<>(comp);
+    for (int i = 0; i < count.length; ++i) {
+        pq.add(new TreeNode(count[i]));
+    }
+    TreeNode a = null, b = null, z = null;
+    while (pq.size() > 1) {
+        a = pq.remove();
+        b = pq.remove();
+        z = new TreeNode(a.val+b.val);
+        z.left = a;
+        z.right = b;
+        pq.add(z);
+    }
+    return pq.remove();
+}
+```
 
 ## 堆
 
