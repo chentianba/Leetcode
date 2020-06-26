@@ -13,3 +13,5 @@
     * [字典序算法](/problems/字典序算法.md)
     * [无序数组求第k大](/problems/无序数组求第k大.md)
     * [二分查找](/problems/二分查找.md)
+* [剑指offer](/jianzhioffer/README.md)
+* [Leetcode](/leetcode/README.md)
