@@ -9,6 +9,6 @@
 * Not Importance
     * [Github的pezy](https://github.com/pezy/LeetCode)  
     * [Leetcode答案查询网站](https://www.jiuzhang.com/solution/)
-    * <img width="1060" height="400" src="/%E7%AE%97%E6%B3%95%E7%B1%BB%E5%88%AB%E5%9B%BE.png"/>
-
-![111](/算法类别图.png)
+    <!-- * <img width="1060" height="400" src="/%E7%AE%97%E6%B3%95%E7%B1%BB%E5%88%AB%E5%9B%BE.png"/> -->
+    * 
+        ![111](/algorithm_classification.png)
